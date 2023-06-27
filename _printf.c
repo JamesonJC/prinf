@@ -1,17 +1,18 @@
 #include "main.h"
-#include <stdio.h>
 
-/******/
-
-/*%[flag][width][.precision][length]specifi*/
+/**
+ * _printf - The functions write to the output stream to print out.
+ * @format: The string and the formats to be diplaced on screen.
+ * Return: Number of characters written in the stream stdout.
+ */
 
 int _printf(const char *format, ...)
 {
 	va_list l_args;
 	unsigned int i = 0, tot_char = 0;
 	char *s;
-	va_start(l_args, format);
 
+	va_start(l_args, format);
 	s = va_arg(l_args, char *);
 	for (; format[i] != '\0'; i++)
 	{
@@ -21,6 +22,7 @@ int _printf(const char *format, ...)
 		} else if (format[i + 1] == '%')
 		{
 			_putchar(format[i]);
+			i++;
 		} else if (format[i + 1] == 's')
 		{
 			tot_char += _puts(s);

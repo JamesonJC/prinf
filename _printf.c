@@ -10,10 +10,11 @@ int _printf(const char *format, ...)
 {
 	va_list l_args;
 	unsigned int i = 0, tot_char = 0;
-	char *s;
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(l_args, format);
-	s = va_arg(l_args, char *);
 	for (; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
@@ -23,14 +24,14 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[i]);
 			i++;
-		} else if (format[i + 1] == 's')
+		} else if (format[i + 1] == 's' || format[i + 1] == 'c')
 		{
-			tot_char += _puts(s);
-			tot_char -= 1;
+			tot_char += handle_chars(format, l_args, i);
 			i++;
-		} else if (format[i + 1] == 'c')
+
+		}else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 		{
-			_putchar(va_arg(l_args, int));
+			tot_char += handle_ints(l_args);
 			i++;
 		}
 		tot_char += 1;

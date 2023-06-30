@@ -6,7 +6,7 @@
  * Return: Number of characters printed.
  */
 
-int  _puts(const char *str)
+int  _puts(char *str)
 {
 	int i = 0;
 

@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			tot_char += handle_chars(format, l_args, i);
 			i++;
 
-		}else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+		} else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 		{
 			tot_char += handle_ints(l_args);
 			i++;
